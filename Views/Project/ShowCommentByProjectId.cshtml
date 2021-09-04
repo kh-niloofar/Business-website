@@ -1,0 +1,32 @@
+﻿@model IEnumerable<DataLayer.Comment>
+
+
+<!-- Newsfeed Content -->
+<!--===================================================-->
+@foreach (var item in Model)
+{
+
+    <a class="media-right ml-3" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="~/Content/images/avatars/man blond hair.png"></a>
+    <div class="media-body">
+        <div class="mar-btm">
+            <a href="#" class="btn-link text-semibold media-heading box-inline">@item.UserName</a>
+            <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg ml-2"></i>@item.CreateDate.ToShamsi()</p>
+        </div>
+        <p id="UserComment">@Html.Raw(item.UserComment)</p>
+        <div class="btn-group">
+            <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
+            <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+        </div>
+        <a class="btn btn-sm btn-default btn-hover-primary" href="#">پاسخ</a>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#UserComment').ckeditor()
+        });
+    </script>
+}

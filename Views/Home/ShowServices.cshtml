@@ -1,0 +1,36 @@
+﻿@model IEnumerable<DataLayer.Services>
+
+@section section{
+    <section class="about-us-header">
+        <div class="col-lg-12 p-0">
+            <h1 class="text-center text-white font-weight-bolder display-1" style="line-height: 700px;">خدمات ما</h1>
+        </div>
+    </section>
+}
+
+<!-- Services section -->
+<section id="what-we-do">
+    <div class="container">
+        <h2 class="section-title mb-2 h1">آنچه ما انجام میدهیم</h2>
+        <p class="text-center text-muted h5">داشتن یک سایت زیبا و کارآمد یکی از مهم ترین ارکان در هر کسب و کار است.</p>
+
+            <div class="row mt-5">
+                @foreach (var item in Model)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                        <div class="card">
+                            <div class="card-block block-1">
+                                <h3 class="card-title">@item.ServiceName</h3>
+                                <p class="card-text">@Html.Raw(item.ServiceContent)</p>
+                                <a href="#" title="Read more" class="read-more">بیشتر بخوانید<i class="fa fa-angle-double-right ml-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+
+    </div>
+</section>
+<!-- /Services section -->

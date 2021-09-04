@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DataLayer.Project>
+
+    @{
+        ViewBag.Title = "ShowProjects";
+    }
+
+    @section section{
+        <section class="about-us-header">
+            <div class="col-lg-12 p-0">
+                <h1 class="text-center text-white font-weight-bolder display-1" style="line-height: 700px;">پروژه های ما</h1>
+            </div>
+        </section>
+    }
+    <!-- our projects -->
+
+    <div class="container mt-5">
+        <div class="row mt-5">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-12 col-lg-4">
+                    <div class="post-slide2 text-right">
+                        <div class="post-img">
+                            <a href="#"><img src="~/ProjectImages/@item.ProjectImage" alt=""></a>
+                        </div>
+                        <div class="post-content">
+                            <h3 class="post-title"><a href="#">@item.ProjectSubject</a></h3>
+                            <p class="post-description">
+                                @item.ProjectDesc
+                            </p>
+                            <ul class="post-bar">
+                                <li>
+                                    <i class="fa fa-clock-o" style="color: #1A1919;"></i>
+                                    شروع پروژه در @item.ProjectStartDate.ToShamsi()
+                                </li>
+                                <li>
+                                    <i class="fa fa-clock-o" style="color: #1A1919;"></i>
+                                    پایان پروژه در @item.ProjectEndDate.ToShamsi()
+                                </li>
+                            </ul>
+                            <a href="/Project/@item.ProjectId" class="read-more">بیشتر بخوانید</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+    <!-- end of our projects-->

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DataLayer.Services>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>سرویس ها</h2>
+
+<p>
+    @Html.ActionLink("ایجاد سرویس جدید", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceContent)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceContent)
+        </td>
+        <td>
+            @Html.ActionLink("ویرایش", "Edit", new { id=item.ServiceId }) |
+            @Html.ActionLink("نمایش جزئیات", "Details", new { id=item.ServiceId }) |
+            @Html.ActionLink("حذف", "Delete", new { id=item.ServiceId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DataLayer.Blog>
+
+@{
+    ViewBag.Title = "ShowBlogs";
+}
+
+@section section{
+    <section class="about-us-header">
+        <div class="col-lg-12 p-0">
+            <h1 class="text-center text-white font-weight-bolder display-1" style="line-height: 700px;">مقالات</h1>
+        </div>
+    </section>
+}
+
+<div class="container">
+
+    <div class="block-1 m-5">
+        <h2 class="text-center">مقالات معرفی شده</h2>
+
+        <p class="text-center">
+            مرتبط ترین مقالات تخصصی را در اینجا بیابید
+        </p>
+
+    </div>
+
+    <div class="row  text-right">
+        <section id="pinBoot">
+            @foreach (var item in Model)
+            {
+
+                <article class="white-panel">
+                    <img src="~/BlogImages/@item.BlogImageName" alt="">
+                    <h4><a href="#">@item.BlogSubject</a></h4>
+                    <p>@item.BlogDesc</p>
+                    <a class="btn btn-group-sm btn-info" href="/Blogs/@item.BlogId">بیشتر بخوانید</a>
+                </article>
+
+            }
+        </section>
+
+
+        </div>
+</div>
+
+@section scripts{
+<script src="~/Content/js/bootstrap.min.js"></script>
+<script src="~/Content/js/bootstrap.bundle.min.js"></script>
+<script src="~/Content/js/jquery-3.3.1.slim.min.js"></script>
+<script src="~/Content/js/script.js"></script>
+}

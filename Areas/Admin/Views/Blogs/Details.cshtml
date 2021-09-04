@@ -1,0 +1,82 @@
+﻿@model DataLayer.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>جزئیات اطلاعات مقاله</h2>
+
+<div>
+    <h4>مقاله</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogCats.CatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogCats.CatName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogSubject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogSubject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogImageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogImageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogTag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogTag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogVisit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogVisit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BlogDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BlogDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.BlogId }) |
+    @Html.ActionLink("بازگشت به لیست", "Index")
+</p>

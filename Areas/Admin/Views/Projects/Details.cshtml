@@ -1,0 +1,82 @@
+﻿@model DataLayer.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+    <h2>نمایش پروژه</h2>
+
+<div>
+    <h4>پروژه ها</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Services.ServiceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Services.ServiceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectSubject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectSubject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectVisit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectVisit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectEndDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.ProjectId }) |
+    @Html.ActionLink("بازگشت به لیست", "Index")
+</p>

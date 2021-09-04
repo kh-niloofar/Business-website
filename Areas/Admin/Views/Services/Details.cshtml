@@ -1,0 +1,33 @@
+﻿@model DataLayer.Services
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>نمایش جزئیات سرویس</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceContent)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.ServiceId }) |
+    @Html.ActionLink("بازگشت به لیست", "Index")
+</p>

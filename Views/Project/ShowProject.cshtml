@@ -1,0 +1,115 @@
+﻿@model DataLayer.Project
+
+@{
+    ViewBag.Title = "ShowProject";
+}
+
+<!-- Project page -->
+@section section{
+    <section class="blog-page-header">
+        <div class="col-lg-12 p-0 blog-image mb-5">
+            <img src="~/ProjectImages/@Model.ProjectImage" alt="Projectpage" class="img-fluid">
+        </div>
+    </section>
+}
+<div class="container pb50 text-right" style="direction: ltr;">
+    <div class="row">
+        <div class="col-md-12 mb40">
+            <article>
+                <div class="post-content">
+                    <h3>@Model.ProjectSubject </h3>
+                    <ul class="post-meta list-inline">
+                        <li class="list-inline-item">
+                            <p>@Model.ProjectStartDate.ToShamsi() - @Model.ProjectEndDate.ToShamsi()</p>
+                        </li>
+                    </ul>
+                    <p>@Model.ProjectDesc</p>
+                    <p class="lead">@Html.Raw(Model.ProjectContent)</p>
+                    <ul class="list-inline share-buttons">
+
+                        <li class="list-inline-item">
+                            <a href="#" class="social-icon-sm si-dark si-colored-facebook si-gray-round">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="social-icon-sm si-dark si-colored-twitter si-gray-round">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="social-icon-sm si-dark si-colored-linkedin si-gray-round">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">:راه های اشتراک گذاری</li>
+                    </ul>
+                    <hr class="mb40">
+                    <h4 class="mb40 text-uppercase font500">درباره نویسنده</h4>
+                    <div class="media-block mb40">
+                        <a class="media-right ml-2" href="#"><img class="img-circle img-sm " alt="Profile Picture" src="~/Content/images/avatars/girl.jpg"></a>
+                        <div class="media-body">
+                            <h5 class="mt-0 font700">نیلوفر خادمی</h5> 	لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+                        </div>
+                    </div>
+            </article>
+        </div>
+        <!-- comments -->
+        <div class="container bootdey mt-3 p-5">
+            <div class="col-md-12 bootstrap snippets">
+                <h4 class="text-center">نظرات کاربران</h4>
+
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="media-block pad-all text-right" id="commentList">
+                            @Html.Action("ShowCommentByProjectId")
+                        </div>
+                        <!--===================================================-->
+                        <!-- End Newsfeed Content -->
+                    </div>
+
+                <h4 class="text-center">ثبت نظر</h4>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="float-right">نام</label>
+                            <input type="text" class="form-control" placeholder="مرتضی احمدی" id="UserName">
+                        </div>
+                        <div class="form-group">
+                            <label class="float-right">ایمیل</label>
+                            <input type="email" class="form-control" placeholder="john@doe.com" id="UserEmail">
+                        </div>
+                        <div class="form-group">
+                            <label class="float-right">دیدگاه</label>
+                            <textarea class="form-control" rows="5" placeholder="ثبت دیدگاه" id="UserComment"></textarea>
+                        </div>
+                        <div class="mar-top clearfix">
+                            <button class="btn btn-sm btn-primary pull-right" type="submit" onclick="AddComment()"><i class="fa fa-pencil fa-fw"></i> ثبت نظر</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of comments-->
+
+    </div>
+</div>
+
+            </div>
+        </div>
+
+<!-- end of Project page -->
+<script>
+    function AddComment() {
+        $.ajax({
+            url: "/Projects/AddComment/" +@Model.ProjectId,
+            method: "Get",
+            data: { name: $("#UserName").val(), email: $("#UserEmail").val(), usercomment: $("#UserComment").val() }
+        }).done(function (result) {
+            $("#commentList").html(result);
+            $("#UserName").val(" ");
+            $("#UserEmail").val(" ");
+            $("#UserComment").val(" ");
+        })
+    }
+</script>

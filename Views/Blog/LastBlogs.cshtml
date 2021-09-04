@@ -1,0 +1,17 @@
+﻿@model IEnumerable<DataLayer.Blog>
+
+<div>
+    <h4 class="sidebar-title">آخرین مقالات</h4>
+    <ul class="list-unstyled">
+        @foreach (var item in Model)
+        {
+            <li class="media">
+                <img class="d-flex mr-3 img-fluid" width="64" src="~/BlogImages/@item.BlogImageName" alt="Generic placeholder image">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1"><a href="#">@item.BlogSubject</a></h5> @item.BlogDate.ToShamsi()
+                </div>
+            </li>
+        }
+
+    </ul>
+</div>

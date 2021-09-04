@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DataLayer.Comment>
+
+        
+            <div class="mar-top clearfix">
+                <button class="btn btn-sm btn-primary pull-right" type="submit" onclick="AddComment()"><i class="fa fa-pencil fa-fw"></i> ثبت نظر</button>
+            </div>
+
+
+<script>
+        function AddComment() {
+        $.ajax({
+            url: "/Blogs/AddAnswerComment/" +@ViewBag.id,
+            method: "Get",
+            data: {  blogcomment: $("#UserComment").val() }
+        }).done(function (result) {
+            $("#commentList").html(result);
+        })
+    }
+</script>

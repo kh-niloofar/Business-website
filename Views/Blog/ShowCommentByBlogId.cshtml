@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DataLayer.Comment>
+
+<!-- Newsfeed Content -->
+<!--===================================================-->
+@foreach (var item in Model)
+{
+
+    <a class="media-right ml-3" href="#"><img class="img-circle img-sm" alt="Profile Picture" src="~/Content/images/avatars/man with beer.png"></a>
+    <div class="media-body">
+        <div class="mar-btm">
+            <a href="#" class="btn-link text-semibold media-heading box-inline">@item.UserName</a>
+            <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg ml-2"></i>@item.CreateDate.ToShamsi()</p>
+        </div>
+        <p id="UserComment">@Html.Raw(item.UserComment)</p>
+        <div class="btn-group">
+            <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
+            <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+        </div>
+        <div class="media-body mr-5" id="answerList">
+            <div class="mar-btm">
+                <a href="#" class="btn-link text-semibold media-heading box-inline">@item.UserName</a>
+                <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg ml-2"></i>@item.CreateDate.ToShamsi()</p>
+            </div>
+            <p id="UserComment">@Html.Raw(item.UserComment)</p>
+            <div class="btn-group">
+                <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
+                <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+            </div>
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <button class="btn btn-sm btn-default btn-hover-primary" onclick="answerComment()">پاسخ</button>
+                <div class="panel answer">
+                    <div class="panel-body">
+                        <p style="font-size:12px;">پاسخ به @item.UserName</p>
+                        <div class="form-group">
+                            <label class="float-right">دیدگاه</label>
+                            <textarea class="form-control" rows="5" id="UserComment"></textarea>
+                        </div>
+                        <div class="mar-top clearfix">
+                            <button class="btn btn-sm btn-primary pull-right" type="submit" onclick="AddAnswer()"><i class="fa fa-pencil fa-fw"></i> ثبت نظر</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        }
+
+
+        <script>
+    function AddAnswer() {
+        $.ajax({
+            url: "/Blogs/AddAnswerComment/" +@ViewBag.id,
+            method: "Get",
+            data: {  blogcomment: $("#UserComment").val() }
+        }).done(function (result) {
+            $("#answerList").html(result);
+            var answer = document.querySelector("#answerList");
+            answer.classList.toggle("active");
+        })
+    }
+        </script>
+        @section Scripts {
+            <script src="~/ckeditor/ckeditor.js"></script>
+            <script src="~/ckeditor/adapters/jquery.js"></script>
+            <script>
+                $(function () {
+                    $('#UserComment').ckeditor()
+                });
+            </script>
+        }
+

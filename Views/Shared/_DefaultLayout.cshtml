@@ -1,0 +1,168 @@
+﻿<!doctype html>
+<html class="no-js" dir="rtl" lang="fa-IR">
+<head>
+    <meta charset="UTF-8">
+    <title>MYTestSite</title>
+    <base href="">
+    <meta name="googlebot" content="index,follow">
+    <meta name="robots" content="noodp,noydir">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--css CDNs-->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap-rtl.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Content/js/jquery.min.js"></script>
+</head>
+<body>
+    <!-- Navbar-->
+    @RenderSection("section", false)
+    <section>
+        <nav class="navbar navbar-expand-lg fixed-top py-3">
+            <div class="container-fluid">
+                <img class="navbar_brand" src="~/Content/images/logo1.png">
+                <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+                        aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="dark-blue-text">
+                        <i class="fa fa-bars fa-1x"></i>
+                    </span>
+                </button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"><a href="/Home/Index" class="nav-link font-weight-bold">خانه <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item"><a href="/Home/About" class="nav-link font-weight-bold">درباره ما</a></li>
+                        <li class="nav-item"><a href="/Services" class="nav-link font-weight-bold">خدمات</a></li>
+                        <li class="nav-item"><a href="/Projects" class="nav-link font-weight-bold">پروژه ها</a></li>
+                        <li class="nav-item"><a href="/Blogs" class="nav-link font-weight-bold">مقالات</a></li>
+                        <li class="nav-item"><a href="/Home/Contact" class="nav-link font-weight-bold">تماس با ما</a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                    <div class="dropdown ml-5">
+                        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @User.Identity.Name
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <button class="dropdown-item" type="button"><a class="text-decoration-none" href="/Admin/BlogCats">مدیریت گروه های مقالات</a></button>
+                            <button class="dropdown-item" type="button"><a class="text-decoration-none" href="/Admin/Blogs">مدیریت مقالات</a></button>
+                            <button class="dropdown-item" type="button"><a class="text-decoration-none" href="/Admin/Projects">مدیریت پروژه ها</a></button>
+                            <button class="dropdown-item" type="button"><a class="text-decoration-none" href="/Admin/Services">مدیریت خدمات</a></button>
+                            <button class="dropdown-item" type="button"><a class="text-decoration-none" href="/Account/SignOut">خروج</a></button>
+                        </div>
+                    </div>
+                        }
+                        else { 
+                    <li class="nav-item"><a href="/Account/Login" class="nav-link font-weight-bold">ورود</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <div>
+        @RenderBody()
+    </div>
+    <!-- footer -->
+    <footer class="p-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#457b9d" fill-opacity="1" d="M0,32L80,69.3C160,107,320,181,480,197.3C640,213,800,171,960,154.7C1120,139,1280,149,1360,154.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
+
+            </path>
+
+        </svg>
+        <div style="background-color: #457b9d" class="footer-text">
+            <section class="">
+                <!-- Grid container -->
+                <div class="container p-3">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-lg-6 col-md-12 mb-4 mb-md-0 ">
+                            <h4 class="text-right jsutify-content text-white">درباره ما</h4>
+
+                            <p class="text-right text-justify text-white" style="font-size: 16px;">
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد
+                            </p>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                            <h5 class="text-center mb-3 text-white">خدمات های محبوب ما</h5>
+
+                            <ul class="list-unstyled mb-0 text-center quick-links" style="font-size: 16px;">
+                                <li>
+                                    <a href="#" class="text-white" style="text-decoration: none;">طراحی سایت</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-white" style="text-decoration: none;">طراحی لندینگ پیج</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-white" style="text-decoration: none;">برنامه نویسی بک اند</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-white" style="text-decoration: none;">طراح UI/UX</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                            <h5 class="mb-0 text-center mb-3 text-white">دسترسی سریع</h5>
+
+                            <ul class="list-unstyled text-center quick-links" style="font-size: 16px;">
+                                <li>
+                                    <a href="#" class="text-white" style="text-decoration: none;">مقالات</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-white" style="text-decoration: none;">خدمات ما</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-white" style="text-decoration: none;">پروژه ها</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-white" style="text-decoration: none;">درباره ما</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+
+                    <!--Grid row-->
+                </div>
+                <!-- Grid container -->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                        <ul class="list-unstyled list-inline social text-center">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-telegram"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                </div>
+                <!-- Copyright -->
+                <div class="text-center p-3 text-white" style="background-color: rgba(0, 0, 0, 0.2);">
+                    Copyright:© 2020<a class="text-white" href="#"> Test.com</a>
+                </div>
+                <!-- Copyright -->
+            </section>
+        </div>
+    </footer>
+    <!-- end of footer -->
+    <!-- js CDN-->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/js/script.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

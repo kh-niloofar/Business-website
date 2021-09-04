@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DataLayer.BlogCat>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>اطلاعات دسته بندی ها</h2>
+
+<p>
+    @Html.ActionLink("ایجاد دسته جدید", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CatName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CatName)
+        </td>
+        <td>
+            @Html.ActionLink("ویرایش", "Edit", new { id=item.CatId }) |
+            @Html.ActionLink("نمایش دسته", "Details", new { id=item.CatId }) |
+            @Html.ActionLink("حذف", "Delete", new { id=item.CatId })
+        </td>
+    </tr>
+}
+
+</table>

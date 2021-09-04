@@ -1,0 +1,88 @@
+﻿@model DataLayer.Project
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+    <h2>حذف</h2>
+
+    <h3>آیا از حذف این پروژه مطمئن هستید؟</h3>
+<div>
+    <h4>پروژه ها</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Services.ServiceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Services.ServiceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectSubject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectSubject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectVisit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectVisit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectEndDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger"/>|
+            @Html.ActionLink("بازگشت به لیست", "Index")
+        </div>
+    }
+</div>

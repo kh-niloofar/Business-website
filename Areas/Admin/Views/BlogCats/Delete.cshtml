@@ -1,0 +1,32 @@
+﻿@model DataLayer.BlogCat
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>حذف</h2>
+
+<h3>آیا از حذف این مورد مطمئن هستید؟</h3>
+<div>
+    <h4>دسته بندی ها</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-default" /> |
+            @Html.ActionLink("بازگشت به لیست", "Index")
+        </div>
+    }
+</div>

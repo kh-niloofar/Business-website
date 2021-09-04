@@ -1,0 +1,40 @@
+﻿@model DataLayer.Services
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>حذف سرویس</h2>
+
+<h3>آیا از حذف این سرویس مطمئن هستید؟</h3>
+<div>
+    <h4>سرویس ها</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceContent)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("بازگشت به لیست", "Index")
+        </div>
+    }
+</div>

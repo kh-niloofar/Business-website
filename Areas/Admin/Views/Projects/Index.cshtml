@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DataLayer.Project>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>پروژه ها</h2>
+
+<p>
+    @Html.ActionLink("ایجاد پروژه جدید", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Services.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectSubject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectEndDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        <img src="~/ProjectImages/@item.ProjectImage" class="thumbnail" style="max-width:120px"/>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Services.ServiceName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProjectSubject)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProjectDesc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProjectContent)
+    </td>
+
+    <td>
+        @item.ProjectStartDate.ToShamsi()
+    </td>
+    <td>
+        @item.ProjectEndDate.ToShamsi()
+    </td>
+    <td>
+        @Html.ActionLink("ویرایش", "Edit", new { id = item.ProjectId }) |
+        @Html.ActionLink("نمایش جزئیات پروژه ها", "Details", new { id = item.ProjectId }) |
+        @Html.ActionLink("حذف", "Delete", new { id = item.ProjectId })
+    </td>
+</tr>
+}
+
+</table>

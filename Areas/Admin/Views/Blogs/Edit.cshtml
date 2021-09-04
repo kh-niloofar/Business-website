@@ -1,0 +1,98 @@
+﻿@model DataLayer.Blog
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>ویرایش</h2>
+
+@using (Html.BeginForm("Edit", "Blogs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>مقالات</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.BlogId)
+    @Html.HiddenFor(model => model.BlogVisit)
+    @Html.HiddenFor(model => model.BlogDate)
+    @Html.HiddenFor(model => model.BlogImageName)
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BlogSubject, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BlogSubject, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BlogSubject, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CatId, "دسته بندی", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CatId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CatId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BlogDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BlogDesc, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BlogDesc, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BlogContent, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BlogContent, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BlogContent, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BlogImageName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="ImgUpload" />
+            @Html.ValidationMessageFor(model => model.BlogImageName, "", new { @class = "text-danger" })
+            @if (Model.BlogImageName != null)
+            {
+                <img src="~/BlogImages/@Model.BlogImageName" class="thumbnail" style="max-width:120px" />
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BlogTag, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BlogTag, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.BlogTag, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="ویرایش" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("بازگشت به لیست", "Index")
+</div>
+@section scripts
+    {
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/adapters/jquery.js"></script>
+    <script>
+        $(function () {
+            $('#BlogContent').ckeditor();
+        });
+    </script>
+}

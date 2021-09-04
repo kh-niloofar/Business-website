@@ -1,0 +1,25 @@
+﻿@model DataLayer.BlogCat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>نمایش دسته</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.CatId }) |
+    @Html.ActionLink("بازگشت", "Index")
+</p>
